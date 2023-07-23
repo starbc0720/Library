@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost/library" #spring이 바라볼 db 정보
+    username: "root"
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver  #database 접근할 때 사용할 프로그램
