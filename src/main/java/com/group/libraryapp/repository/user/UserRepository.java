@@ -2,9 +2,11 @@ package com.group.libraryapp.repository.user;
 
 import com.group.libraryapp.dto.user.response.UserResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class UserRepository { //Repository : DB와의 접근 담당
 
     private final JdbcTemplate jdbcTemplate;
