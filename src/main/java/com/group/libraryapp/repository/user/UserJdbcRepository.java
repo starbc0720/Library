@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository //개발자가 직접 만든 서비스인 경우 이런식으로 붙여줌, Service도 마찬가지
-public class UserRepository { //Repository : DB와의 접근 담당
+public class UserJdbcRepository { //Repository : DB와의 접근 담당
 
     private final JdbcTemplate jdbcTemplate;
 
-    public UserRepository(JdbcTemplate jdbcTemplate) {
+    public UserJdbcRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
