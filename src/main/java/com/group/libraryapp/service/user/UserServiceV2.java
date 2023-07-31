@@ -38,4 +38,9 @@ public class UserServiceV2 {
         user.updateName(request.getName());
         userRepository.save(user); //save : 주어진 객체 저장하거나 업데이트 시켜줌
     }
+
+    public void deleteUser(String name){
+        // SELECT * FROM user WHERE name = ?
+        User user = userRepository.findByName(name).orElseThrow(IllegalArgumentException::new);
+    }
 }
