@@ -1,6 +1,10 @@
 package com.group.libraryapp.domain.user;
 
+import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity //Spring이 User 객체와 user 테이블을 같은 것으로 바라보게 만든다는 의미
 public class User {
@@ -13,6 +17,9 @@ public class User {
     private String name;
 
     private Integer age;
+
+    @OneToMany(mappedBy = "user") //연관관계의 주인, 연관관계의 주인의 값이 설정되어야만 진정한 데이터가 저장
+    private List<UserLoanHistory> userLoanHistories = new ArrayList<>();
 
     protected User() {
     } //JPA는 꼭 기본 생성자 필요
