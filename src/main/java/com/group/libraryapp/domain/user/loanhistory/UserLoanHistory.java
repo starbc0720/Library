@@ -11,6 +11,7 @@ public class UserLoanHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id = null;
 
+    @JoinColumn(nullable = false) // 연관관계의 주인이 활용할 수 있는 어노테이션, 필드의 이름, null 여부, 유일성 여부, 업데이트 여부 등 지정
     @ManyToOne // N:1 관계, ex) 학생과 교장
     private User user;
 

@@ -18,7 +18,9 @@ public class User {
 
     private Integer age;
 
-    @OneToMany(mappedBy = "user") //연관관계의 주인, 연관관계의 주인의 값이 설정되어야만 진정한 데이터가 저장
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true) //연관관계의 주인의 값이 설정되어야만 진정한 데이터가 저장
+                                                                                    //cascade 옵션으로 인해 user가 생성되면 해당 user와 연관된 userloanhistory도 삭제됨
+                                                                                    //orphan removal 옵션 -> 객체간의 관계가 끊어진 데이터 자동으로 제거
     private List<UserLoanHistory> userLoanHistories = new ArrayList<>();
 
     protected User() {

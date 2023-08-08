@@ -35,7 +35,7 @@ public class BookService {
 
     @Transactional
     public void loanBook(BookLoanRequest request){
-        // 1. 책 정보 가져옴
+        // 1. 책 정보 가져옴q
         Book book = bookRepository.findByName(request.getBookName())
                 .orElseThrow(IllegalArgumentException::new);
 
