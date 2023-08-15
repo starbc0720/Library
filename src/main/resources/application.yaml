@@ -2,42 +2,38 @@ spring:
   config:
     activate:
       on-profile: local
-
-    datasource:
-      url: "jdbc:h2:mem:library;MODE=MYSQL;NON_KEYWORDS=USER" #NON_KEYWORDS=USER option을 사용해야 mysql에서 기본적으로 user 테이블을 만들지 않아서 user table 만들어서 사용 가능
-      username: "sa"
-      password: ""
-      driver-class:name: org.h2.Driver
-    jpa:
+  datasource:
+    url: "jdbc:h2:mem:library;MODE=MYSQL;NON_KEYWORDS=USER"
+    username: "sa"
+    password: ""
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
       hibernate:
-        ddl-auto: create
-      properties:
-        hibernate:
-          show_sql: true
-          format_sql: true
-          dialect: org.hibernate.dialect.H2Dialect
-    h2:
-      console:
-        enabled: true
-        path: /h2-console
-
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 ---
 spring:
   config:
-    active:
+    activate:
       on-profile: dev
   datasource:
-    url: "jdbc:mysql://localhost/library" #spring이 바라볼 db 정보
+    url: "jdbc:mysql://localhost/library"
     username: "root"
-    password: 1234
-    driver-class-name: com.mysql.cj.jdbc.Driver  #database 접근할 때 사용할 프로그램
+    password: 1234 # 필요한 비밀번호
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none #create : 기존 테이블 삭제 후 다시 생성, create_drop: 스프링 종료 시 테이블 모두 제거
-                    # update: 객체 테이블 다른 부분 변경, #validate: 객체와 테이블 동일한 지 확인, 다를 시 서버 종료
-                    # none : 별다른 조치 x
+      ddl-auto: none
     properties:
       hibernate:
-        show_sql: true #JPA 사용 DB에 쿼리 날릴 경우 SQL 보여줄 것인지 설정
-        format_sql: true #SQL 보여줄 때 보기좋게 보여줄 것인지
-        dialect: org.hibernate.dialect.MySQL8Dialect # DB 특정 시 조금씩 다른 SQL 수정
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
